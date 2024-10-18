@@ -10,7 +10,7 @@ print("\n"*10)
 SPEED = 150
 SLOW_RATE = 0.92
 SPEED_LIMIT = 3
-BARREL_CAPACITY =20
+BARREL_CAPACITY =6
 
 mixer.init()
 mixer.music.load("au/BGmusic.mp3")
@@ -86,22 +86,22 @@ def animateRotation(barrel):
   
 
 
-# manipulateVolume(0.1)
-# Sprint("Welcome to my little game.", typer, 3)
-# Sprint("This is a game about luck.", typer, 3)
-# manipulateVolume(0.2)
-# Sprint("This is a game about a chance.", typer, 3)
-# manipulateVolume(0.3)
-# Sprint("This is a game about a gun.", typer, 4)
-# manipulateVolume(0.6)
-# Sprint("A loaded gun.", typer, 4)
-# manipulateVolume(0.7)
-# Sprint("...", typer, 1)
-# Sprint("Do you have luck?", typer, 3)
-# manipulateVolume(0.9)
-# input("[PLAYER] => ")
-# manipulateVolume(0.95)
-# Sprint("Lets check it...", typer, 3)
+manipulateVolume(0.5)
+Sprint("Welcome to my little game.", typer, 3)
+Sprint("This is a game about luck.", typer, 3)
+manipulateVolume(0.1)
+Sprint("This is a game about a chance.", typer, 3)
+manipulateVolume(0.15)
+Sprint("This is a game about a gun.", typer, 4)
+manipulateVolume(0.6)
+Sprint("A loaded gun.", typer, 4)
+manipulateVolume(0.7)
+Sprint("...", typer, 1)
+Sprint("Do you have luck?", typer, 3)
+manipulateVolume(0.9)
+Sinput(typer, 2)
+manipulateVolume(0.95)
+Sprint("Lets check it...", typer, 3)
 
 
 
