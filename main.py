@@ -85,7 +85,6 @@ def animateRotation(barrel):
         return last
   
 
-
 manipulateVolume(0.05)
 Sprint("Welcome to my little game.", typer, 2)
 Sprint("This is a game about luck.", typer, 2)
@@ -132,4 +131,6 @@ while True:
       Sprint("A real man will win this game, with no fear (Enter)", typer, 2)
 
       first_time = False
+    else:
+      Sprint(randomizeArrayOrder(SPOOKY_WORDS)[0], typer, -1)
 

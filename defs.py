@@ -24,6 +24,8 @@ def show(img):
   print("\r"+img)
   
 def Sprint(text, sound, dur=3):
+  if (dur < 0):
+    dur = len(text)*(dur/-10)
   printed = ""
   for char in text:
     printed+=char
