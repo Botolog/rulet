@@ -1,4 +1,6 @@
-from art import *
+from artV2 import *
+
+# from art import *
 from time import sleep as wait
 from pygame import mixer
 from defs import *
@@ -6,9 +8,9 @@ clear()
 print("\n"*10)
 
 SPEED = 150
-SLOW_RATE = 0.95
-SPEED_LIMIT = 5
-BARREL_CAPACITY = 5
+SLOW_RATE = 0.92
+SPEED_LIMIT = 3
+BARREL_CAPACITY =20
 
 mixer.init()
 mixer.music.load("au/BGmusic.mp3")
@@ -37,63 +39,89 @@ def manipulateVolume(stressLevel):
   clock.set_volume(stressLevel)
   rrr.set_volume(stressLevel)
   hbeat.set_volume(stressLevel)
-
-
-manipulateVolume(0.1)
-Sprint("Welcome to my little game.", typer, 3)
-Sprint("This is a game about luck.", typer, 3)
-manipulateVolume(0.2)
-Sprint("This is a game about a chance.", typer, 3)
-manipulateVolume(0.3)
-Sprint("This is a game about a gun.", typer, 4)
-manipulateVolume(0.6)
-Sprint("A loaded gun.", typer, 4)
-manipulateVolume(0.7)
-Sprint("...", typer, 1)
-Sprint("Do you have luck?", typer, 3)
-manipulateVolume(0.9)
-input("[PLAYER] => ")
-manipulateVolume(0.95)
-Sprint("Lets check it...", typer, 3)
-
-
-
-
-
-BARREL = [False]*(BARREL_CAPACITY-1)+[True]
-
-last = None
-
-while True:
+  
+def animateRotation(barrel):
   Speed = SPEED
-  manipulateVolume(0.05)
-  if (last!=None):
-    input()
-  manipulateVolume(0.5)
   while True:
-    for space in randomizeArrayOrder(BARREL):
+    for space in range(len(barrel)):
       tick.play()
-      show(GUN_ROTATING)
-      wait(1/Speed)
-      if (space):
+      
+      if (barrel[space]):
+        show(GUN_ROTATING1_BL)
+      elif (barrel[space-1]):
+        show(GUN_ROTATING1_PL)
+      else:
+        show(GUN_ROTATING1)
+      wait(1/Speed/3)
+      
+      
+      if (barrel[space]):
         show(GUN_LOADED)
       else:
         show(GUN_UNLOADED)
-      wait(1/Speed)
-      last = space
+      wait(1/Speed/3)
+      
+      if (barrel[space+1]):
+        show(GUN_ROTATING2_BL)
+      elif (barrel[space]):
+        show(GUN_ROTATING2_PL)
+      else:
+        show(GUN_ROTATING2)
+      wait(1/Speed/3)
+      
+      
+      last = barrel[space]
       Speed *= SLOW_RATE
       
       stress = 1 - Speed / SPEED
       manipulateVolume(stress)
       
       if (Speed < SPEED_LIMIT):
-        break
-    if (Speed < SPEED_LIMIT):
-      break
+        wait(0.3)
+        if (barrel[space]):
+          show(GUN_LOADED)
+        else:
+          show(GUN_UNLOADED)
+        return last
+  
+
+
+# manipulateVolume(0.1)
+# Sprint("Welcome to my little game.", typer, 3)
+# Sprint("This is a game about luck.", typer, 3)
+# manipulateVolume(0.2)
+# Sprint("This is a game about a chance.", typer, 3)
+# manipulateVolume(0.3)
+# Sprint("This is a game about a gun.", typer, 4)
+# manipulateVolume(0.6)
+# Sprint("A loaded gun.", typer, 4)
+# manipulateVolume(0.7)
+# Sprint("...", typer, 1)
+# Sprint("Do you have luck?", typer, 3)
+# manipulateVolume(0.9)
+# input("[PLAYER] => ")
+# manipulateVolume(0.95)
+# Sprint("Lets check it...", typer, 3)
+
+
+
+
+
+BARREL = initBarrel(BARREL_CAPACITY)
+last = None
+
+while True:
+  manipulateVolume(0.05)
+  if (last!=None):
+    input()
+  manipulateVolume(0.5)
+  
+  last = animateRotation(randomizeArrayOrder(BARREL))
   
   if last:
     Sprint("G.G.", typer)
     boom.play()
+    kill()
   else:
     Sprint("You are fine... try again (Enter)", typer)
     win.play()

@@ -4,6 +4,30 @@ import pyaudio
 from pygame import mixer
 import vlc
 import os
+from artV2 import *
+from defs import *
+
+
+while True:
+  # show(GUN_REGG)
+  # input()
+  # show(GUN_LOADED)
+  # input()
+  show(GUN_UNLOADED)
+  input()
+  show(GUN_ROTATING1)
+  input()
+  show(GUN_ROTATING2)
+  input()
+
+
+
+
+
+
+
+
+
 os.add_dll_directory(os.getcwd())
 os.add_dll_directory(r'C:\Program Files\VLC')
 
