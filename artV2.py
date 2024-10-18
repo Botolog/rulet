@@ -1,3 +1,13 @@
+#TODO: make some spooky sentences to type when player is fine, 10 is good [4/10]
+SPOOKY_WORDS = [
+  "What is a good game without serius consequences?",
+  "Isn't it exciting? Dont worry, it will only get better...",
+  "Next time might be very different...",
+  "Kinda impressive... Expected you to run away on your first try"
+]
+
+
+
 GUN_REGG = """
                          @@@@@@@@                                                         
                          @@@@@@@@                                                         

@@ -38,10 +38,10 @@ def Sprint(text, sound, dur=3):
     elif char == " ":
       mod = -1
     wait(max(dur / len(text) + mod, 0))
-  wait(1)
+  wait(0.5)
   print()
   
-def Sinput(sound, dur=3):
+def Sinput(sound, dur=3, end="\n"):
   text = "[Player] ==> "
   printed = ""
   for char in text:
@@ -56,7 +56,10 @@ def Sinput(sound, dur=3):
       mod = 0.4
     elif char == " ":
       mod = -1
+    elif char.capitalize == char:
+      mod = -0.1
     wait(max(dur / len(text) + mod, 0))
+  print(text, end=" ")
   input()
 
 

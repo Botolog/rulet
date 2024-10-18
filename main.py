@@ -86,22 +86,23 @@ def animateRotation(barrel):
   
 
 
-manipulateVolume(0.5)
-Sprint("Welcome to my little game.", typer, 3)
-Sprint("This is a game about luck.", typer, 3)
-manipulateVolume(0.1)
+manipulateVolume(0.05)
+Sprint("Welcome to my little game.", typer, 2)
+Sprint("This is a game about luck.", typer, 2)
 Sprint("This is a game about a chance.", typer, 3)
+manipulateVolume(0.1)
+Sprint("This is a game about a bullet,", typer, 4)
 manipulateVolume(0.15)
-Sprint("This is a game about a gun.", typer, 4)
+Sprint("Inside a gun.", typer, 2)
 manipulateVolume(0.6)
-Sprint("A loaded gun.", typer, 4)
-manipulateVolume(0.7)
 Sprint("...", typer, 1)
-Sprint("Do you have luck?", typer, 3)
+Sprint("Do you believe in luck?", typer, 3)
 manipulateVolume(0.9)
-Sinput(typer, 2)
+Sinput(typer, 1)
 manipulateVolume(0.95)
-Sprint("Lets check it...", typer, 3)
+Sprint("Lets play.", typer, 3)
+Sprint("oh and i forgot to mention...", typer, 2)
+Sprint("IF YOU LOSE, THIS COMPUTER IS DEAD", typer, 5)
 
 
 
@@ -109,10 +110,11 @@ Sprint("Lets check it...", typer, 3)
 
 BARREL = initBarrel(BARREL_CAPACITY)
 last = None
+first_time = True
 
 while True:
   manipulateVolume(0.05)
-  if (last!=None):
+  if (not first_time):
     input()
   manipulateVolume(0.5)
   
@@ -123,5 +125,11 @@ while True:
     boom.play()
     kill()
   else:
-    Sprint("You are fine... try again (Enter)", typer)
     win.play()
+    Sprint("You are fine... for now.", typer, 2)
+    if (first_time):
+      Sprint("You still can escape... IF YOU ARE A CHIKEN", typer, 2)
+      Sprint("A real man will win this game, with no fear (Enter)", typer, 2)
+
+      first_time = False
+
